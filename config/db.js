@@ -1,26 +1,13 @@
-import {mysql} from 'mysql'
-import dotenv from 'dotenv'
-dotenv.config({ path: './config/.env'})
+import { Sequelize } from 'sequelize'
 
-const connection = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD
-  });
-  
-  connection.connect((err) =>{
-    if (err) throw err;
-    console.log("Connected!");
-  });
 
-const url = process.env.DB_URL
+const DB = process.env.DATABASE
+const USERNAME = process.env.USERNAME
+const PASSWORD = process.env.PASSWORD
+const HOST = process.env.HOST
+const 
 
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true,  useCreateIndex: true})
+const sequelize = new Sequelize(DB, USERNAME, PASSWORD, {host: HOST, dialect: 'mssql', operatorsAliases: false});
 
-const connection = mongoose.connection
 
-connection.once('open', () => {
-    console.log('connection with monogo established succussfully')
-})
-
-export default connection
+export default sequelize

@@ -1,34 +1,39 @@
 import sequelize from "../config/db";
 import { DataTypes, Model } from 'sequelize'
 
-class Agent extends Model {}
+class Wallet extends Model {}
 
-Agent.init({
+Wallet.init({
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true
     },
-    name: {
+    generated_id: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    email: {
-        type: DataTypes.STRING,
+    current_balance: {
+        type: Sequelize.DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
-    dob: {
+    agent_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true
+    },
+    last_updated_date: {
         type: DataTypes.DATE,
         allowNull: false
     }
 }, {
   sequelize,
   timestamps: true,
-  modelName: 'Agent'
+  modelName: 'Wallet'
 });
 
 
-console.log(Agent === sequelize.models.Agent)
+console.log(Wallet === sequelize.models.Wallet)
 
-export { Agent }
+export { Wallet }
