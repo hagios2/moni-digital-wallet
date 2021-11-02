@@ -34,6 +34,7 @@ Wallet.init({
   sequelize,
   timestamps: true,
   modelName: 'wallets'
+  
 });
 
 console.log(Wallet === sequelize.models.Wallet)
