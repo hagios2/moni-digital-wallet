@@ -16,26 +16,16 @@ class WalletControllerClass
 
             let agent = await Agent.findOne({where: {id: 1}})
 
-            console.log(agent)
-
             let { amount } = req.body
 
-            console.log(amount)
-
             let agent_wallet = await agent.getWallet()
-
-            console.log(agent_wallet)
 
             if(!agent_wallet)
             {
                 return errorResponse(req,res, 'Wallet Not Found', 404)
             }
 
-            console.log(typeof amount, typeof Number(agent_wallet.current_balance))
-
             let current_balance = parseFloat(amount + Number(agent_wallet.current_balance)).toFixed(2)
-
-            console.log(current_balance, 'current_balance', agent, 'agent id')
 
             await agent_wallet.update({current_balance, last_updated_date: Sequelize.fn('NOW')}, {transaction})
 
@@ -79,41 +69,46 @@ class WalletControllerClass
         const transaction = await sequelize.transaction()
 
         try{
-            
-            let agent = req.user
+
+            let agent = await Agent.findOne({where: {id: 1}})
 
             let { amount } = req.body
 
-            let agent_wallet = await Wallet.findOne({where: {agent_id: agent.id}})
+            let agent_wallet = await agent.getWallet()
 
             if(!agent_wallet)
             {
-                return errorResponse(req,res, error)
+                return errorResponse(req,res, 'Wallet Not Found', 404)
             }
 
-            const balance_after_withdrawal = agent_wallet.current_balance - amount
-
-            if(balance_after_withdrawal < 0)
+            if(Number(agent_wallet.current_balance) < amount)
             {
-                return errorResponse(req, res, )
+                return errorResponse(req, res, 'Insufficient funds', 422)
             }
 
-            await agent_wallet.update({amount, last_updated_date: Sequelize.NOW}, {transaction})
+            let current_balance = parseFloat(Number(agent_wallet.current_balance) - amount).toFixed(2)
+
+            await agent_wallet.update({current_balance, last_updated_date: Sequelize.fn('NOW')}, {transaction})
 
             await Transaction.create({
                 wallet_id: agent_wallet.id,
                 status: Transaction.SUCCESS_STATUS,
-                type: Transaction.CREDIT,
+                type: Transaction.WITHDRAWAL_TYPE,
+                generated_id: v4(),
                 amount,
-                transaction_date: Sequelize.NOW,
+                transaction_date: Sequelize.fn('NOW'),
 
             }, {transaction})
 
-          
-        }
-        catch(error)
-        {
-            return errorResponse(req, res, error)
+            await transaction.commit();
+
+            return successResponse(req, res, 'success')
+
+        }catch (error) {
+
+            await transaction.rollback()
+
+            return errorResponse(req,res, error)
         }
     }
 
