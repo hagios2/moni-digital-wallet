@@ -1,6 +1,6 @@
 import sequelize from '../config/db.js'
 import pkg from 'sequelize'
-const { DataTypes, Model } = pkg
+const { DataTypes, Model, Sequelize } = pkg
 
 class Loan extends Model {
     
@@ -28,7 +28,8 @@ Loan.init({
     },
     requestedAt: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
+        defaultValue: Sequelize.fn('NOW'),
     },
     status: {
         type: DataTypes.STRING,

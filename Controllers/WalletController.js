@@ -1,6 +1,5 @@
 import Sequelize from 'sequelize';
 import { successResponse, errorResponse} from '../server_responses/responses.js'
-import { Wallet } from '../Models/Wallet.js';
 import sequelize from '../config/db.js'
 import { Agent } from '../Models/Agent.js';
 import { Transaction} from '../Models/Transaction.js'

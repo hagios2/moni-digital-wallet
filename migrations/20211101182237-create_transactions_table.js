@@ -38,7 +38,7 @@ module.exports = {
     },
       transaction_date: {
           type: Sequelize.DataTypes.DATE,
-          defaultValue: Sequelize.NOW
+          defaultValue: Sequelize.fn('NOW'),
       },
       createdAt: {
         type: Sequelize.DataTypes.DATE

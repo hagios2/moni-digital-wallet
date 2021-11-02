@@ -1,6 +1,6 @@
 import sequelize from '../config/db.js'
 import pkg from 'sequelize'
-const { DataTypes, Model } = pkg
+const { DataTypes, Model, Sequelize } = pkg
 
 class Transaction extends Model {
 
