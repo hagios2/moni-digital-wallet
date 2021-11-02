@@ -9,6 +9,8 @@ class Loan extends Model {
     static PENDING_STATUS = 'pending'
 
     static OVERDUE = 'overdue'
+
+    static DEFAULT_RATE = 0.125 //12.5%
 }
 
 Loan.init({
@@ -26,7 +28,7 @@ Loan.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    amount: {
+    amount: { //loan amount without interest
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     },
@@ -41,18 +43,23 @@ Loan.init({
     },
     paidAt: {
         type: DataTypes.DATE,
-        allowNull: false
     },
     interest_rate: {
-        type: DataTypes.DECIMAL(3, 2),
-        allowNull: false
+        type: DataTypes.DECIMAL(4, 2),
+        allowNull: false,
+        defaultValue: 0.125 //12.5%
     },
     reason_for_loan: {
         type: DataTypes.TEXT,
     },
-    grand_total: {
+    grand_total: { //amount with interest
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
+    },
+    amount_paid: { //amount with interest
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        defaultValue: 0.00
     },
 
 }, {

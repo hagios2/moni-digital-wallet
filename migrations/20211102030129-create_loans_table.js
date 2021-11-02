@@ -33,11 +33,11 @@ module.exports = {
     },
     paidAt: {
         type: Sequelize.DataTypes.DATE,
-        allowNull: false
     },
     interest_rate: {
-        type: Sequelize.DataTypes.DECIMAL(3, 2),
-        allowNull: false
+        type: Sequelize.DataTypes.DECIMAL(4, 2),
+        allowNull: false,
+        defaultValue: 12.5
     },
     reason_for_loan: {
         type: Sequelize.DataTypes.TEXT,
@@ -45,7 +45,12 @@ module.exports = {
     grand_total: {
         type: Sequelize.DataTypes.DECIMAL(10, 2),
         allowNull: false
-    },    
+    },  
+    amount_paid: { //amount with interest
+        type: Sequelize.DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        defaultValue: 0.00
+    },  
     createdAt: {
         type: Sequelize.DataTypes.DATE
     },
