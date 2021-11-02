@@ -32,6 +32,10 @@ module.exports = {
           type: Sequelize.DataTypes.DECIMAL(10, 2),
           allowNull: false
       },
+      balance_after_transaction: {
+        type: Sequelize.DataTypes.DECIMAL(10, 2),
+        allowNull: false
+    },
       transaction_date: {
           type: Sequelize.DataTypes.DATE,
           defaultValue: Sequelize.NOW

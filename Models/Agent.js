@@ -1,7 +1,8 @@
 import sequelize from '../config/db.js'
 import pkg from 'sequelize'
 const { DataTypes, Model } = pkg
-import { Wallet } from "./Wallet.js";
+import { Wallet } from "./Wallet.js"
+import { Loan } from "./Loan.js"
 
 class Agent extends Model {}
 
@@ -31,6 +32,8 @@ Agent.init({
 });
 
 Agent.Walltet = Agent.hasOne(Wallet, {foreignKey: 'agent_id'})
+
+Agent.Walltet = Agent.hasMany(Loan, {foreignKey: 'agent_id'})
 
 console.log(Agent === sequelize.models.Agent)
 
