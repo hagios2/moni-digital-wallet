@@ -41,7 +41,7 @@ class WalletControllerClass
 
             await transaction.commit();
 
-            return successResponse(req, res, 'success')
+            return successResponse(req, res, 'success', {current_balance})
 
         }catch (error) {
 
@@ -102,7 +102,7 @@ class WalletControllerClass
 
             await transaction.commit();
 
-            return successResponse(req, res, 'success')
+            return successResponse(req, res, 'success', {current_balance})
 
         }catch (error) {
 
@@ -116,20 +116,18 @@ class WalletControllerClass
     {
         try{
 
-            let agent = req.user
+            let agent = await Agent.findOne({where: {id: 1}})
 
-            let { amount } = req.body
-
-            let agent_wallet = await Wallet.findOne({where: {agent_id: agent.id}})
+            let agent_wallet = await agent.getWallet()
 
             if(!agent_wallet)
             {
-                return errorResponse(req,res, error)
+                return errorResponse(req,res, 'Wallet Not Found', 404)
             }
 
             const transactions = await Transaction.findAll({where: {wallet_id: agent_wallet.id}})
 
-            return successResponse(res, req, 'success', transactions)
+            return successResponse(req, res, 'success', {transactions})
           
         }
         catch(error)

@@ -1,5 +1,6 @@
 import express from 'express'
 import WalletController from '../Controllers/WalletController.js'
+import { Transaction } from '../Models/Transaction.js'
 // import { verifyToken } from '../../Middleware/auth.js'
 
 const router = express.Router()
@@ -10,7 +11,7 @@ router.post("/request/for/loan", WalletController.requestForLoan)
 
 router.post("/withdraw/from/wallet", WalletController.withdrawFromWallet)
 
-router.get("/view/transactions-on-wallet", WalletController.viewTransactions)
+router.get("/view/wallet/transactions", WalletController.viewTransactions)
 
 router.post("/repay/loan", WalletController.repayLoan)
 

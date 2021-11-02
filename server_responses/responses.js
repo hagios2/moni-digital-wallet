@@ -1,6 +1,6 @@
 const errorResponse = (req, res, error, code=500) => {
 
-    return res.status(code).json({error: error})
+    return res.status(code).json({error})
 }
 
 const successResponse = (req, res, message = "OK", data = {}, code = 200) => {
