@@ -17,7 +17,7 @@ module.exports = {
       password: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false
-    },
+      },
       email: {
           type: Sequelize.DataTypes.STRING,
           allowNull: false
@@ -25,7 +25,13 @@ module.exports = {
       dob: {
           type: Sequelize.DataTypes.DATE,
           allowNull: false
-      }
+      },
+      createdAt: {
+        type: Sequelize.DataTypes.DATE
+      },
+      updatedAt: {
+      type: Sequelize.DataTypes.DATE,
+    }
   });
    
   },

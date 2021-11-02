@@ -1,4 +1,4 @@
-'use strict';
+'use strict';;
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -21,7 +21,8 @@ module.exports = {
       },
       status: {
           type: Sequelize.DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
+          defaultValue: 'pending'
       },
       type: {
           type: Sequelize.DataTypes.STRING,
@@ -34,7 +35,13 @@ module.exports = {
       transaction_date: {
           type: Sequelize.DataTypes.DATE,
           defaultValue: Sequelize.NOW
-      }
+      },
+      createdAt: {
+        type: Sequelize.DataTypes.DATE
+      },
+      updatedAt: {
+      type: Sequelize.DataTypes.DATE,
+    }
 
     });
   

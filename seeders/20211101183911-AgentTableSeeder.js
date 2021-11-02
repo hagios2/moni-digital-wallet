@@ -7,7 +7,9 @@ module.exports = {
         name: 'Emmanuel Oteng Wilson',
         email: 'hagioswilson@gmail.com',
         password: '1234567',
-        dob: '1990-05-05'
+        dob: '1990-05-05',
+        createdAt: Sequelize.fn('NOW'),
+        updatedAt: Sequelize.fn('NOW')
       }], {});
     
   },

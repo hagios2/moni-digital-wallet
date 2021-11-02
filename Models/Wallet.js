@@ -1,5 +1,7 @@
-import sequelize from "../config/db";
-import { DataTypes, Model } from 'sequelize'
+import sequelize from '../config/db.js'
+import pkg from 'sequelize'
+const { DataTypes, Model } = pkg
+import { Agent } from "./Agent.js";
 
 class Wallet extends Model {}
 
@@ -15,8 +17,9 @@ Wallet.init({
         allowNull: false
     },
     current_balance: {
-        type: Sequelize.DataTypes.DECIMAL(10, 2),
-        allowNull: false
+        type: DataTypes.DECIMAL(10, 2),
+        allowNull: false,
+        defaultValue: 0.00
     },
     agent_id: {
         type: DataTypes.INTEGER,
@@ -30,9 +33,8 @@ Wallet.init({
 }, {
   sequelize,
   timestamps: true,
-  modelName: 'Wallet'
+  modelName: 'wallets'
 });
-
 
 console.log(Wallet === sequelize.models.Wallet)
 

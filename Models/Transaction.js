@@ -1,7 +1,23 @@
-import sequelize from "../config/db";
-import { DataTypes, Model } from 'sequelize'
+import sequelize from '../config/db.js'
+import pkg from 'sequelize'
+const { DataTypes, Model } = pkg
 
-class Transaction extends Model {}
+class Transaction extends Model {
+
+    static PENDING_STATUS = 'PENDING'
+
+    static SUCCESS_STATUS = 'SUCCESS'
+
+    static FAILED_STATUS = 'FAILED'
+
+    static TOPUP_TYPE = 'credit'
+
+    static WITHDRAWAL_TYPE = 'debit'
+
+    static LOAN_DEPOSIT_TYPE = 'loan_deposit'
+
+    static LOAN_REPAYMENT_TYPE = 'loan_repayment'
+}
 
 Transaction.init({
     id: {
@@ -37,7 +53,7 @@ Transaction.init({
 }, {
   sequelize,
   timestamps: true,
-  modelName: 'Transaction'
+  modelName: 'transactions'
 });
 
 

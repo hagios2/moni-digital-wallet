@@ -1,5 +1,5 @@
 import express from 'express'
-import WalletController from "../../Controllers/WalletController.js"
+import WalletController from '../Controllers/WalletController.js'
 // import { verifyToken } from '../../Middleware/auth.js'
 
 const router = express.Router()

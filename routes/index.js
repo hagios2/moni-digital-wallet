@@ -1,17 +1,12 @@
 import express from 'express'
-import admin_router from './admin/adminRouter.js'
-import admin_auth_router from './admin/authRouter.js'
-import facilitator_auth_router from './facilitator/authRouter.js'
-import facilitator_router from './facilitator/facilitator.js'
+import auth_router from './auth.js'
+import transaction_router from './wallet.js'
+
 
 const app = express()
 
-app.use('/admin/auth', admin_auth_router)
+app.use('/auth', auth_router)
 
-app.use('/admin', admin_router)
-
-app.use('/auth', facilitator_auth_router)
-
-app.use('/facilitator', facilitator_router)
+app.use('/transaction', transaction_router)
 
 export default app

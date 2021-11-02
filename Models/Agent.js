@@ -1,5 +1,7 @@
-import sequelize from "../config/db";
-import { DataTypes, Model } from 'sequelize'
+import sequelize from '../config/db.js'
+import pkg from 'sequelize'
+const { DataTypes, Model } = pkg
+import { Wallet } from "./Wallet.js";
 
 class Agent extends Model {}
 
@@ -25,9 +27,10 @@ Agent.init({
 }, {
   sequelize,
   timestamps: true,
-  modelName: 'Agent'
+  modelName: 'agents'
 });
 
+Agent.Walltet = Agent.hasOne(Wallet, {foreignKey: 'agent_id'})
 
 console.log(Agent === sequelize.models.Agent)
 
