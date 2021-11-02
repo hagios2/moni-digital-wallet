@@ -5,7 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db_migration": "npx sequelize-cli db:migrate"
+
   },
   "author": "Emmanuel Oteng Wilson",
   "license": "ISC",
