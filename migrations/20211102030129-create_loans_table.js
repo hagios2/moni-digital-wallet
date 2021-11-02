@@ -10,6 +10,10 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
     },
+    agent_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     generated_id: {
         type: Sequelize.DataTypes.STRING,
         allowNull: false

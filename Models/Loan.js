@@ -18,6 +18,10 @@ Loan.init({
         autoIncrement: true,
         primaryKey: true
     },
+    agent_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     generated_id: {
         type: DataTypes.STRING,
         allowNull: false

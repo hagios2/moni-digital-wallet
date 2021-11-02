@@ -52,9 +52,13 @@ class WalletControllerClass
 
     async requestForLoan(req, res){
 
+        const transaction = await sequelize.transaction()
+
         try{
 
-            let { amount } = req.body
+            let agent = await Agent.findOne({where: {id: 1}})
+
+            let { amount, reason_for_loan } = req.body
 
 
         }catch (error) {
