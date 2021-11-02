@@ -11,7 +11,7 @@ module.exports = {
         primaryKey: true
     },
     agent_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.DataTypes.INTEGER,
         allowNull: false
     },
     generated_id: {
