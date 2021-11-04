@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "A backend api for moni digital wallet",
   "main": "server.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db_migration": "npx sequelize-cli db:migrate --env production",
-    "db_seed": "npx sequelize-cli db:seed:all --env production"
+    "db_seed": "npx sequelize-cli db:seed:all --env"
 
   },
   "author": "Emmanuel Oteng Wilson",
