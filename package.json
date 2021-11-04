@@ -6,7 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db_migration": "npx sequelize-cli db:migrate --env production"
+    "db_migration": "npx sequelize-cli db:migrate --env production",
+    "db_seed": "npx sequelize-cli db:seed:all --env production"
 
   },
   "author": "Emmanuel Oteng Wilson",
