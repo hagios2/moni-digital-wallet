@@ -10,7 +10,18 @@ const HOST = process.env.HOST
 
 console.log(DB, USERNAME, PASSWORD, HOST)
 
-const sequelize = new Sequelize(DB, USERNAME, PASSWORD, {host: HOST, dialect: 'mysql', operatorsAliases: false});
+const sequelize = new Sequelize(DB, USERNAME, PASSWORD, 
+    {
+        host: HOST,
+        dialect: 'postgres',
+        operatorsAliases: false,
+        dialectOptions: {
+            ssl: {
+              require: true, 
+              rejectUnauthorized : false 
+            }
+          },
+    });
 
 
 export default sequelize
