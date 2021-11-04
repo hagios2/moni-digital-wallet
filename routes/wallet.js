@@ -1,5 +1,6 @@
 import express from 'express'
 import WalletController from '../Controllers/WalletController.js'
+import CourseController from '../Controllers/CourseController.js'
 import { Transaction } from '../Models/Transaction.js'
 // import { verifyToken } from '../../Middleware/auth.js'
 
@@ -14,6 +15,8 @@ router.post("/withdraw/from/wallet", WalletController.withdrawFromWallet)
 router.get("/view/wallet/transactions", WalletController.viewTransactions)
 
 router.post("/repay/loan", WalletController.repayLoan)
+
+router.post('/course/filter', CourseController.courseFilter)
 
 export default router
 
