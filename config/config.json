@@ -19,7 +19,9 @@
     "database": "dd167svpkud7nv",
     "host": "ec2-44-196-170-156.compute-1.amazonaws.com",
     "dialect": "postgres",
-    "ssl": true,
+    "dialectOptions": {
+      "ssl": true
+    },
     "port": 5432
   }
 }
