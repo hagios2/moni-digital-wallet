@@ -62,7 +62,7 @@ class WalletControllerClass
 
             console.log(agent)
 
-            let agent_loans = await agent.getLoans({where: {agent_id: agent.id, status: Loan.PENDING_STATUS}})
+            let agent_loans = await Loan.findOne({where: {agent_id: agent.id, status: Loan.PENDING_STATUS}})
 
             console.log(agent_loans)
 
