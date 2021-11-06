@@ -14,17 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "whskvahdbysuqk",
-    "password": "0e7fb757844ec2aa0e08be1d57818747e751fa4332583c0c78304acc922b6484",
-    "database": "dd167svpkud7nv",
-    "host": "ec2-44-196-170-156.compute-1.amazonaws.com",
-    "dialect": "postgres",
-    "dialectOptions": {
-      "ssl": {
-        "require": true, 
-        "rejectUnauthorized" : false 
-      }
-    },
-    "port": 5432
+    "username": "oteng",
+    "password": "too885R3*^8853b",
+    "database": "moni_wallet",
+    "host": "localhost",
+    "dialect": "mysql"
   }
 }
