@@ -14,9 +14,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "oteng",
+    "username": "HellioCehrt",
     "password": "too885R3*^8853b",
-    "database": "moni_wallet",
+    "database": "moni",
     "host": "localhost",
     "dialect": "mysql"
   }
