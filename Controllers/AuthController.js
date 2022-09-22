@@ -34,7 +34,7 @@ class AuthControllerClass
             
             let {email, password} = req.body
 
-            let agent = await Agent.findOne({email})
+            let agent = await Agent.findOne({ where: {email}})
 
             if(!agent)
             {
