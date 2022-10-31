@@ -16,6 +16,6 @@ app.use('/api',routes)
 
 console.log(process.env.HOST)
 
-const PORT  = process.env.PORT || 3000
+const PORT  = process.env.PORT || 3002
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`))

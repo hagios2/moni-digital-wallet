@@ -1,7 +1,7 @@
 import {successResponse, errorResponse} from '../server_responses/responses.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-// import { RefreshToken } from '../../Models/RefreshTokens.js';
+import { RefreshToken } from '../Models/RefreshToken.js';
 import { Agent } from '../Models/Agent.js';
 import omit from 'lodash';
 
@@ -34,24 +34,28 @@ class AuthControllerClass
             
             let {email, password} = req.body
 
-            console.log(req.body)
-
             let agent = await Agent.findOne({ where: {email}})
 
             if(!agent)
             {
                 return errorResponse(req, res, 'Invalid Credentials', 401) 
             }
+            
+            console.log('before')
 
             if(await bcrypt.compare(password, agent.password))
             {   
+                console.log('after')
+
                 const token = jwt.sign({ agent }, process.env.SECRET, {expiresIn: '30m'})
 
                 const refresh_token = jwt.sign({ agent }, process.env.REFRESH_SECRET)
 
+                console.log(refresh_token, refresh_token)
+
                 if(token && refresh_token)
                 {
-                    await RefreshToken.createToken({refresh_token})
+                    await RefreshToken.create({refresh_token, provider: 'agent'})
 
                     return successResponse(req, res, 'success', {token, refresh_token})
                 }
